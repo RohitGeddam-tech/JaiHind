@@ -8,7 +8,7 @@ const Routing = () => {
       <>
         <Switch>
           <Route path="/" exact component={App} />
-          <Route path="/Mirana" exact component={App} />
+          <Route path="/JaiHind" exact component={App} />
         </Switch>
       </>
     </Router>
