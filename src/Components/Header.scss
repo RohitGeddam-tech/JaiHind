@@ -1,0 +1,203 @@
+.nav {
+  height: 110px;
+  width: 100%;
+  position: fixed;
+  z-index: 999;
+  background-color: white;
+  box-shadow: 0px 4px 14px rgba(0, 0, 0, 0.25);
+  .absoluteImg {
+    position: absolute;
+    top: 0;
+    left: 3%;
+    img {
+      width: 170px;
+      height: 110px;
+    }
+  }
+  .mob {
+    width: 100%;
+    background-color: #002060;
+    .container {
+      text-align: end;
+      width: 90%;
+      height: 40px;
+      display: flex;
+      align-items: center;
+      justify-content: flex-end;
+      .call {
+        display: flex;
+        align-items: center;
+        p {
+          margin: 0;
+          font-weight: bold;
+          font-size: 16px;
+          line-height: 19px;
+          color: #ffffff;
+        }
+        a {
+          font-weight: bold;
+          font-size: 16px;
+          line-height: 19px;
+          font-feature-settings: "pnum" on, "lnum" on;
+          color: #ffffff;
+          &:hover {
+            text-decoration: underline;
+          }
+        }
+      }
+    }
+  }
+  .header {
+    width: 90%;
+    margin: auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    .container {
+      display: flex;
+      height: 70px;
+      width: 100%;
+      align-items: center;
+      justify-content: flex-end;
+      img {
+        width: auto;
+        height: auto;
+      }
+      .navDetails {
+        display: flex;
+        align-items: center;
+        form {
+          display: flex;
+          border: 1px solid #919eab;
+          border-radius: 3px;
+          height: 40px;
+          .text-input {
+            input {
+              border: none !important;
+              height: 30px !important;
+
+              &:focus ~ label,
+              &:not([value=""]) ~ label {
+                top: -10px;
+                left: 8px;
+              }
+            }
+            label {
+              top: 11.5px;
+            }
+          }
+          .btn {
+            padding-top: 15px !important;
+            padding-bottom: 15px !important;
+          }
+        }
+        .navfade {
+          font-weight: 700;
+          font-size: 16px;
+          line-height: 19px;
+          margin: 0 20px;
+          // margin-top: 5px;
+          color: #282828;
+          text-transform: capitalize;
+          &:hover {
+            border-bottom: 2px solid #910e15;
+            color: #910e15;
+          }
+        }
+      }
+      .navbar {
+        display: flex;
+        align-items: center;
+        a {
+          font-weight: normal;
+          font-size: 16px;
+          line-height: 21px;
+          color: #000000;
+          padding: 0 15px;
+          &:first-child {
+            padding-left: 0;
+          }
+          &.btn {
+            padding: 8px 23px;
+            outline: none;
+            border: none;
+            background-color: #ba7f45;
+            border-radius: 20px;
+            font-style: normal;
+            font-weight: bold;
+            font-size: 20px;
+            line-height: 27px;
+            color: white;
+          }
+        }
+      }
+    }
+  }
+  @media (min-width: 1200px) {
+    .container {
+      width: 96%;
+    }
+  }
+  @media (min-width: 1400px) {
+    .container {
+      // width: 1200px !important;
+      .navDetails {
+        margin-right: -15px;
+      }
+    }
+  }
+
+  // .nav-image {
+  //   width: 250px;
+  // }
+
+  .nav-image a {
+    display: flex;
+  }
+
+  .side {
+    position: absolute;
+    width: 100%;
+    top: 109px;
+    left: 100%;
+    height: calc(100vh - 50px);
+    background-color: #fff;
+    &.active {
+      left: 0;
+      transition: all 0.5s ease-in-out;
+    }
+    .container {
+      display: block;
+      height: 100%;
+      padding: 20px 0;
+      li {
+        list-style: none;
+        padding: 25px 0;
+        padding-left: 20px;
+        .navfade {
+          font-weight: 500;
+          font-size: 24px;
+          line-height: 28px;
+          color: #667c8a;
+          text-transform: capitalize;
+          text-align: center;
+        }
+      }
+    }
+  }
+  @media (max-width: 450px) {
+    .mob {
+      .container {
+        justify-content: center;
+      }
+    }
+    a {
+      &.btn {
+        padding: 10px 0;
+        width: 100%;
+        display: flex;
+        justify-content: center;
+      }
+    }
+  }
+}
