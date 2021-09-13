@@ -15,25 +15,25 @@ const NewHeader = () => {
   const [width] = useWindowSize();
   const [isActive, setActive] = useState(false);
   const side = isActive ? "side active" : "side";
-  const [code, setCode] = useState({ ...defaultFormState });
+  const [details, setDetails] = useState({ ...defaultFormState });
   const [error, setError] = useState({});
 
   const handleChange = (e) => {
-    const tempDetails = { ...code },
+    const tempDetails = { ...details },
       tempError = { ...error };
     tempDetails[e.target.name] = e.target.value;
     tempError[e.target.name] = "";
-    setCode(tempDetails);
+    setDetails(tempDetails);
     setError(tempError);
   };
 
   const validate = () => {
-    const tempError = {...error};
-    var codeRegExp = /^[0-9]$/;
+    const tempError = { ...error };
+    var emailRegExp = /^[0-9_\-.\s]+$/;
 
     tempError.code =
-      (!code && "The phone number field is required.") ||
-      (!codeRegExp.test(code) && "The phone number field is invalid.");
+      (!details.code && "The email field is required.") ||
+      (!emailRegExp.test(details.code) && "The email field is invalid.");
 
     setError(tempError);
     return Object.values(tempError).some((val) => val);
@@ -44,9 +44,9 @@ const NewHeader = () => {
     setError({});
     const errorExist = validate();
     if (!errorExist) {
-      console.log(code);
+      console.log("code", details);
     } else {
-      console.log(error);
+      console.log("error", error);
     }
   };
 
@@ -65,15 +65,17 @@ const NewHeader = () => {
           </div>
         </div>
       </div>
-      {width < 1020 ? (
+      {width < 1100 ? (
         <>
           <div className="header">
             <nav className="container">
-              <div className="nav-image">
-                <NavHashLink to="/#top" onClick={() => setActive(false)}>
-                  <img src={logo} alt="logo" />
-                </NavHashLink>
-              </div>
+              {width < 490 ? (
+                <div className="nav-image">
+                  <NavHashLink to="/#top" onClick={() => setActive(false)}>
+                    <img src={logo} alt="logo" />
+                  </NavHashLink>
+                </div>
+              ) : null}
             </nav>
             <div className="nav-links">
               {isActive ? (
@@ -95,41 +97,52 @@ const NewHeader = () => {
           </div>
           <div className={side}>
             <div className="container">
-              {/* <li>
+              <li>
                 <NavHashLink to="/#top" className="navfade">
                   Home
                 </NavHashLink>
-              </li> */}
+              </li>
               <li>
-                <NavHashLink to="/About#top" className="navfade">
+                <NavHashLink to="/#top" className="navfade">
+                  Business Area
+                </NavHashLink>
+              </li>
+              <li>
+                <NavHashLink to="/#top" className="navfade">
                   About Us
                 </NavHashLink>
               </li>
-              <li>
-                {" "}
-                <NavHashLink to="/Rooms#top" className="navfade">
-                  Rooms
+              {/* <li>
+                <NavHashLink to="/#top" className="navfade">
+                  ISO Certificate
                 </NavHashLink>
-              </li>
-              <li>
-                <NavHashLink to="/Restaurant#top" className="navfade">
-                  Restaurant
-                </NavHashLink>
-              </li>
-              <li>
-                <NavHashLink to="/Attract#top" className="navfade">
-                  Attractions
-                </NavHashLink>
-              </li>
+              </li> */}
               <li>
                 <NavHashLink to="/Contact#top" className="navfade">
                   Contact Us
                 </NavHashLink>
               </li>
               <li>
-                <NavHashLink to="/#top" className="btn">
-                  Book Now
-                </NavHashLink>
+                <form onSubmit={handleSubmit}>
+                  <div className="text-input">
+                    <input
+                      value={details.code}
+                      className="input"
+                      name="code"
+                      type="number"
+                      onChange={handleChange}
+                    />
+                    <label htmlFor="code" className="input-placeholder">
+                      Enter Item Code<span>*</span>
+                    </label>
+                    {/* {error && error.code ? (
+                      <p className="error-text">{error.code}</p>
+                    ) : null} */}
+                  </div>
+                  <button type="submit" className="btn">
+                    Go
+                  </button>
+                </form>
               </li>
             </div>
           </div>{" "}
@@ -151,9 +164,9 @@ const NewHeader = () => {
                 <NavHashLink to="/#top" className="navfade">
                   About Us
                 </NavHashLink>
-                <NavHashLink to="/#top" className="navfade">
+                {/* <NavHashLink to="/#top" className="navfade">
                   ISO Certificate
-                </NavHashLink>
+                </NavHashLink> */}
                 <NavHashLink to="/#top" className="navfade">
                   Contact Us
                 </NavHashLink>
@@ -167,17 +180,18 @@ const NewHeader = () => {
                 <form onSubmit={handleSubmit}>
                   <div className="text-input">
                     <input
-                      value={code.code}
+                      value={details.code}
                       className="input"
                       name="code"
+                      type="number"
                       onChange={handleChange}
                     />
                     <label htmlFor="code" className="input-placeholder">
                       Enter Item Code<span>*</span>
                     </label>
-                    {error && error.lname ? (
-                      <p className="error-text">{error.lname}</p>
-                    ) : null}
+                    {/* {error && error.code ? (
+                      <p className="error-text">{error.code}</p>
+                    ) : null} */}
                   </div>
                   <button type="submit" className="btn">
                     Go

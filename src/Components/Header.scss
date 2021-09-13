@@ -14,6 +14,37 @@
       height: 110px;
     }
   }
+  @media(max-width:1100px){
+    .side{
+      .container{
+        li:nth-child(5){
+          padding-top: 10px;
+          form{
+            width: 300px !important;
+          }
+        }
+      }
+    }
+  }
+  @media(max-width:490px){
+    .absoluteImg{
+      display: none;
+    }
+    .header{
+      .container{
+        justify-content: flex-start !important;
+      }
+    }
+    .side{
+      .container{
+        li:nth-child(5){
+          form{
+            width: 100% !important;
+          }
+        }
+      }
+    }
+  }
   .mob {
     width: 100%;
     background-color: #002060;

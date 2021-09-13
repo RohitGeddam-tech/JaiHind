@@ -51,8 +51,8 @@ const About1 = () => {
           <div className="link">
             <p>Call Us At</p>
             <div className="a">
-              <a href="tel:+912882560288">+91 288 2560288</a>
-              <a href="tel:+912882560759">+91 288 2560759</a>
+              <a href="tel:+912882560288">+912882560288</a>
+              <a href="tel:+912882560759">+912882560759</a>
             </div>
           </div>
         </div>

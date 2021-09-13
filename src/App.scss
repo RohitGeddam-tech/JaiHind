@@ -41,5 +41,20 @@
         }
       }
     }
+    @media(max-width:740px){
+      height: 370px;
+      .container{
+        p{
+          text-align: center;
+        }
+        .footerLinks{
+          flex-flow: column;
+          text-align: center;
+          a{
+            margin: 5px 0;
+          }
+        }
+      }
+    }
   }
 }
